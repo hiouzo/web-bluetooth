@@ -1,0 +1,46 @@
+<!doctype html>
+<html class="no-js" lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Web-Bluetooth-Demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- import CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- import JavaScript -->
+    <script type="text/javascript" src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+</head>
+
+<body>
+    <button id="the-button">Try it</button>
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
+    </script>
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" rc="js/main.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+
+    <script>
+        const button = document.querySelector('#the-button');
+        button.addEventListener('click', function () {
+            navigator.bluetooth.requestDevice({
+                filters: [{
+                    services: ['battery_service']
+                }]
+            }).then(device => { console.log('Got device:', device.name); console.log('id:', device.id); });
+        });
+    </script>
+</body>
+
+</html>
